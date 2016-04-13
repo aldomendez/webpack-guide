@@ -5,14 +5,14 @@ var ExtractPlugin = require('extract-text-webpack-plugin')
 var production = process.env.NODE_ENV === 'production'
 
 var plugins = [
-  new ExtractPlugin('[name]-[hash].css',{allChunks: true}),
+  new ExtractPlugin('[name].css',{allChunks: true}),
   new webpack.optimize.CommonsChunkPlugin({
     async:true,
     children:true,
     minChunks:2
   })
 ]
-
+console.log(production ? "ENV: production" : "ENV: development")
 if (production) {
   plugins = plugins.concat([
     new CleanPlugin('builds'),
@@ -44,8 +44,8 @@ module.exports = {
   },
   output:{
     path:'builds',
-    filename:production ? '[name].bundle.js' : 'bundle.js',
-    chunkFilename: '[name]-[chunkhash].js',
+    filename: production ? '[name].bundle.js' : 'bundle.js',
+    chunkFilename: '[name]-[hash].js',
     publicPath:'builds/'
   },
   devserver:{

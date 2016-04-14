@@ -18,3 +18,12 @@ set NODE_ENV=production
 webpack
 ```
 
+## Tests
+
+```batch
+npm run test
+```
+
+To see test command line parameters that can be placed in `mocha-webpack.opts` run `npm run mocha-help` it is an alias of `node ./node_modules/mocha-webpack/bin/mocha-webpack --help` (sort of).
+
+You can enable source maps appending `--require source-map-support/register` to `mocha-webpack.opts` file

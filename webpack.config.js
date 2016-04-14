@@ -12,7 +12,7 @@ var plugins = [
     minChunks:2
   })
 ]
-console.log(production ? "ENV: production" : "ENV: development")
+
 if (production) {
   plugins = plugins.concat([
     new CleanPlugin('builds'),
@@ -53,6 +53,16 @@ module.exports = {
   },
   plugins:plugins,
   module: {
+    preLoaders:[
+    {
+      test:/\.js/,
+      loader:'baggage?[file].html=template&[file].scss'
+    },
+    {
+      test:/\.js/,
+      loader:'eslint'
+    }
+    ],
     loaders: [
       {
         test:/\.js$/,

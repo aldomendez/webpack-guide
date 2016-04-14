@@ -1,0 +1,5 @@
+--watch
+--colors
+--reporter spec
+--webpack-config webpack.config-test.js
+src/**/*.test.js
